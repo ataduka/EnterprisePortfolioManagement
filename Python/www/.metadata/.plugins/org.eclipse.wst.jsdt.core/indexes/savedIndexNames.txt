@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+C:\Users\dpunumalli\Desktop\www\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3288711982.index
+3105140631.index
+3732096949.index
+3942212032.index
+502531020.index
+3464963448.index
+3032509969.index

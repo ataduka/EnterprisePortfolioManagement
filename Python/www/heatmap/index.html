@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>D3 TreeHeatmap</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=1800">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div id="controls">
+            <div class="depth">
+                <span>Process Levels:</span>
+                <select onchange="depth_changed(this)">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="values">
+                <span>Values:</span>
+                <select onchange="values_changed(this)">
+                    <option value="0" selected>Revenues</option>
+                    <option value="1">Cost</option>
+                </select>
+            </div>
+            <div class="units">
+                <span>Unit:</span>
+                <select onchange="unit_changed(this)">
+                    <option value="NONE">None</option>
+                    <option value="CURRENCY" selected>USD</option>
+                    <option value="PERCENT">%</option>
+                </select>
+            </div>
+        </div>
+        <div id="chart"></div>
+
+        <script src="vendor/jquery-1.7.2.min.js"></script>
+        <script src="vendor/d3.min.js"></script>
+        <script src="vendor/underscore-min.js"></script>
+        <script src="js/heatmap.js"></script>
+
+        <script src="js/data.js"></script>
+        <script>
+        var options, heatmap;
+
+        function build_parent_links(node, parent) {
+            node.parent = parent;
+            if (node.children !== undefined)
+                _.each(node.children, function(child){ build_parent_links(child, node); });
+        }
+        function aggregate_values(node) {
+            if (node.values === undefined) {
+                node.values = [0,0];
+                _.each(node.children, function(child){
+                    _.each(aggregate_values(child), function(value, index) { node.values[index] += value; });
+                });
+            }
+
+            return node.values;
+        }
+        build_parent_links(data, null);
+        aggregate_values(data);
+
+
+
+        options = {
+            title: 'Company Results',
+            unit: 'CURRENCY',
+            depth: 3,
+            max_cell_width: 500,
+            click_handler: click_handler,
+        };
+
+        heatmap = createTreeHeatmap( $('#chart').get(0), data, options );
+
+
+
+        function unit_changed(e) {
+            var unitValue = e.options[e.selectedIndex].value;
+            heatmap.change_unit(unitValue);
+        }
+
+        function depth_changed(e) {
+            var depthValue = parseInt(e.options[e.selectedIndex].value);
+            heatmap.change_depth(depthValue);
+        }
+
+        function values_changed(e) {
+            var value = parseInt(e.options[e.selectedIndex].value);
+            heatmap.change_value_index(value);
+        }
+
+        function click_handler(is_drill_down, root_node, hit_node) {
+            if (is_drill_down)
+                heatmap.change_root_node(hit_node);
+            else
+                heatmap.change_root_node(root_node.parent);
+        }
+        </script>
+    </body>
+</html>

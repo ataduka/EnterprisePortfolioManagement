@@ -1,0 +1,37 @@
+{
+  "name": "mimosa-dependency-graph",
+  "version": "0.2.0",
+  "homepage": "https://github.com/brzpegasus/mimosa-dependency-graph",
+  "author": "Estelle DeBlois",
+  "description": "A module for visualizing AMD/RequireJS dependencies in Mimosa projects",
+  "contributors": [
+    {
+      "name": "Estelle DeBlois",
+      "email": "edeblois@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brzpegasus/mimosa-dependency-graph"
+  },
+  "keywords": [
+    "mimosa",
+    "mmodule",
+    "module",
+    "dependency",
+    "dependencies",
+    "graph",
+    "d3"
+  ],
+  "dependencies": {
+    "wrench": "~1.5.1"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "main": "./lib/index",
+  "scripts": {
+    "prepublish": "mimosa build"
+  }
+}

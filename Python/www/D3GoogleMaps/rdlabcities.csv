@@ -1,0 +1,27 @@
+code,city,country,lat,lon,color,slvl,contact,phone,siteurl,Area,RNDsys,TGOsys
+KFS,Kafar Saba,Israel,32.18,34.91,green,24x7,John Smith,212-555-1212,http://www.teva.co.il/Pages/default.aspx,Generics,Global ELN; Analytical/PC Lab Systems,GLIS Empower
+NET,Netanya,Israel,32.32,34.85,green,24x7,John Smith,212-555-1212,http://www.teva.co.il/Pages/default.aspx,Specialty; Biologics,Analytical/PC Lab Systems,
+REH,Rehovot,Israel,31.89,34.81,green,24x7,John Smith,212-555-1212,http://www.teva.co.il/Pages/default.aspx,Biologics,Analytical/PC Lab Systems,
+POM,Pomona,USA,41.19,-74.06,green,24x7,John Smith,212-555-1212,http://www.tevausa.com/,Generics,Global ELN; SDMS; Analytical/PC Lab Systems,GLIS Empower
+WES,West Chester,USA,39.97,-75.61,green,24x7,John Smith,212-555-1212,http://www.tevausa.com/,Specialty; Biologics,SDMS; NonGXP ELN;  Legacy Ceph Empower 2; Analytical/PC Lab Systems,Legacy Ceph Labware LIMS
+MAL,Malvern,USA,40.04,-75.51,yellow,9x5,John Smith,212-555-1212,http://www.tevausa.com/,Specialty; Biologics, Legacy Ceph Empower 2,
+BRP,Brooklyn Park,USA,45.09,-93.36,green,24x7,John Smith,212-555-1212,http://www.tevausa.com/,NTE,Local Empower 2; Analytical/PC Lab Systems,Legacy Ceph Labware LIMS
+MIA,Miami,USA,25.76,-80.19,green,24x7,John Smith,212-555-1212,http://www.tevausa.com/,Respiratory,Global ELN; SDMS; Americas R&D Empower 2; Analytical/PC Lab Systems,
+MOM,Mommouth Junction,USA,40.38,-74.55,green,24x7,John Smith,212-555-1212,http://www.tevausa.com/,Respiratory,Americas R&D Empower 2; Analytical/PC Lab Systems,
+RED,Redwood City,USA,37.49,-122.24,yellow,9x5,John Smith,212-555-1212,http://www.tevausa.com/,Biologics,NonGXP ELN,
+SAN,San Diego,USA,32.72,-117.16,green,9x5,John Smith,212-555-1212,http://www.tevausa.com/,Biologics,,
+SYN,Sydney,Australia,-33.87,151.21,yellow,9x5,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/growth_markets/teva_in_australia/,Biologics,NonGXP ELN,
+WAT,Waterford,Ireland,52.26,-7.11,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_ireland/,Respiratory,,
+RUN,Runcorn,UK,53.34,-2.73,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_united_kingdom/,Generics,,
+ABB,Abbots Park,UK,51.74,-0.32,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_united_kingdom/,Respiratory,,
+HAA,Haarlem,Netherlands,52.39,4.65,yellow,9x5,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_netherlands/,Respiratory; Generics,Global ELN; SDMS,
+ZAG,Zagreb,Croatia,45.82,15.98,yellow,9x5,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_croatia/,Generics,Global ELN,
+GOD,Godollo,Hungary,47.6,19.36,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_hungary/,Generics,,
+DEB,Debracen,Hungary,47.53,21.63,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_hungary/,Generics,,
+ULM,Ulm,Germany,48.4,9.99,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/europe/teva_in_germany/,Generics,GLIS Empower 3,
+GOA,Goa,India,15.3,74.12,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/growth_markets/teva_in_india/,Generics,,
+MUM,Mumbai,India,19.08,72.88,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/growth_markets/teva_in_india/,Generics,,
+NAG,Nagoyoa,Japan,35.18,136.91,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/asia/teva_in_japan/,Generics,,
+BUA,Buenos Aires,Argentina,-34.6,-58.38,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/growth_markets/teva_in_argentina/',Generics,SDMS; Americas R&D Empower 2,
+SAC,Santaigo,Chile,-33.45,-70.67,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/growth_markets/teva_in_chile/,Generics,SDMS; Americas R&D Empower 2,
+SAB,Sao Paulo,Brazil,-23.55,-46.63,red,Limited,John Smith,212-555-1212,http://www.tevapharm.com/teva_worldwide/growth_markets/teva_in_brazil/,Generics,,

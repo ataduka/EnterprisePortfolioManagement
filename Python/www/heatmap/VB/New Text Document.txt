@@ -1,0 +1,155 @@
+' Testing script file generation
+
+Sub create_SAP_script_files()
+
+' Define a text string to concatenate information to write to output
+Dim oftxt As String
+Dim iftxt As String
+Dim i, j As Long
+Dim inum As Integer
+Dim onum As Integer 'File handle definition
+Dim Tnew As Boolean
+
+Tnew = True
+
+Dim grpnm As String ' Name of the group Set to be pulled from parameter file
+Dim tcodename As String ' Name of the tcode as we process the file
+
+Dim rng1 As Range  ' Define a Range for the data
+Set rng1 = Worksheets("Sheet1").Range("RawData")  ' Use the named Range defined in Excel - Raw Data is an offset calculation
+Dim cnt As Long
+cnt = rng1.Rows.Count             'identify row count in the RawData
+grpnm = rng1.Cells(1, 1)       ' Getting the group number ID
+tcodename = rng1.Cells(1, 3)     ' Getting the tcode name
+
+oftxt = "c:\temp\SAP\" & tcodename & "\" & tcodename & "-" & grpnm & ".VBS"  ' Create a filename based on tcodename and grpnm
+
+
+If Not IsFileOpen(oftxt) Then
+         onum = FreeFile
+         Open oftxt For Output As #onum
+Else
+          Close #onum
+          onum = FreeFile
+          Open oftxt For Output As #onum
+End If
+
+
+
+For i = 1 To cnt
+      
+    If grpnm <> rng1.Cells(i, 1) Then
+        
+        Close #onum
+
+        grpnm = rng1.Cells(i, 1)
+        tcodename = rng1.Cells(i, 3)
+         
+        oftxt = "c:\temp\SAP\" & tcodename & "\" & tcodename & "-" & grpnm & ".VBS"  ' Create a filename based on tcodename and grpnm
+       
+        onum = FreeFile  ' open new file for the changed arcset id
+        
+        Open oftxt For Output As #onum ' Overwite file if file exists
+        
+        
+        Tnew = True
+    
+    Else
+            If Tnew = False Then
+                Print #onum, ""
+                Call Paramspec(onum, rng1, i, tcodename)
+            End If
+
+    End If
+    
+    If Tnew = True Then
+        
+        Call Wrheader(onum, tcodename)
+        Call Paramspec(onum, rng1, i, tcodename)
+        Tnew = False
+        
+    End If
+
+Next i
+
+Close #onum
+
+
+End Sub
+
+Private Sub Wrheader(ByVal onum As Variant, tcodename As String)
+Dim Filename, MyLine As String
+Filename = "c:\Temp\SAP\" & tcodename & "\" & tcodename & ".txt"
+Open Filename For Input As #99
+
+Do While Not EOF(99)
+    Line Input #99, MyLine
+'    MsgBox (MyLine)
+    Print #onum, MyLine
+Loop
+Close #99
+
+End Sub
+Function IsFileOpen(Filename As String)
+    Dim iFilenum As Long
+    Dim iErr As Long
+     
+    On Error Resume Next
+    iFilenum = FreeFile()
+    Open Filename For Input Lock Read As #iFilenum
+    Close iFilenum
+    iErr = Err
+    On Error GoTo 0
+     
+    Select Case iErr
+    Case 0:    IsFileOpen = False
+    Case 70:   IsFileOpen = True
+    Case Else: IsFileOpen = False
+    End Select
+     
+End Function
+ 
+Private Sub Paramspec(ByVal onum As Variant, rng1 As Range, ByVal i As Integer, tcodename As String)
+Dim Filename, MyLine As String
+Filename = "c:\Temp\SAP\" & tcodename & "\" & tcodename & "-detail.txt"
+Open Filename For Input As #98
+
+Do While Not EOF(98)
+    Line Input #98, MyLine
+    If InStr(MyLine, "&1") <> 0 Then
+         MyLine = Replace(MyLine, "&1", rng1.Cells(i, 3))
+    End If
+    If InStr(MyLine, "&2") <> 0 Then
+         MyLine = Replace(MyLine, "&2", rng1.Cells(i, 4))
+    End If
+    If InStr(MyLine, "&3") <> 0 Then
+         MyLine = Replace(MyLine, "&3", rng1.Cells(i, 5))
+    End If
+    If InStr(MyLine, "&4") <> 0 Then
+         MyLine = Replace(MyLine, "&4", rng1.Cells(i, 6))
+    End If
+    If InStr(MyLine, "&5") <> 0 Then
+         MyLine = Replace(MyLine, "&5", rng1.Cells(i, 7))
+    End If
+    If InStr(MyLine, "&6") <> 0 Then
+         MyLine = Replace(MyLine, "&6", rng1.Cells(i, 8))
+    End If
+    If InStr(MyLine, "&7") <> 0 Then
+         MyLine = Replace(MyLine, "&7", rng1.Cells(i, 9))
+    End If
+    If InStr(MyLine, "&8") <> 0 Then
+         MyLine = Replace(MyLine, "&8", rng1.Cells(i, 10))
+    End If
+    If InStr(MyLine, "&9") <> 0 Then
+         MyLine = Replace(MyLine, "&9", rng1.Cells(i, 14))
+    End If
+    If InStr(MyLine, "&A") <> 0 Then
+         MyLine = Replace(MyLine, "&A", rng1.Cells(i, 14))
+    End If
+
+    Print #onum, MyLine
+Loop
+
+Close #98
+  
+End Sub

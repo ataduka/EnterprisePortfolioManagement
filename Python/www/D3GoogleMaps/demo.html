@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>RD Lab locations for Teva - Markers</title>
+
+<style>
+
+html, body, #map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Just use .gm-style-iw */
+.gm-style-iw {
+width: 300px;
+min-height: 100px;
+background: #693B8D;
+}
+
+.reddot{
+
+    width:33px;
+    height:33px;
+    position:absolute;
+}
+
+.locater{
+  position: absolute;
+  top: 18px;
+  left: 17px;
+}
+
+.mark{
+    fill: none;
+    stroke: #FF9100;
+    stroke-width: 1px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+</style>
+
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://deloitteteams.deloittenet.com/sites/AppDash/Documents/vi.css">
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB68a6rb1e8aRKftTHuhyXXiavH59aPW6Y"></script>
+
+//AIzaSyB68a6rb1e8aRKftTHuhyXXiavH59aPW6Y
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<script>
+
+$(function() {
+
+  $( ".tabs" ).tabs();
+
+});
+
+</script>
+
+
+</Head>
+
+<body>
+
+<div id="map" style="width: 100%; height: 100%;"></div>
+
+<script type = "text/javascript">
+var citydata;
+var map;
+var clocater = {lat: 0, lng: 20};
+
+//Var to control the Kafar Saba location
+var lat_center = 32.18,
+    long_center = 34.91;
+
+
+///////////////////////////////////////////////
+     /**
+       * The CenterControl adds a control to the map that recenters the map on
+       * Lat 0, Lon 20 for world map view
+       * This constructor takes the control DIV as an argument.
+       * @constructor
+       */
+      function CenterControl(controlDiv, map) {
+
+        // Set CSS for the control border.
+        var controlUI = document.createElement('div');
+        controlUI.style.backgroundColor = '#deebf7';
+        controlUI.style.border = '2px solid #deebf7';
+        controlUI.style.borderRadius = '3px';
+        controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+        controlUI.style.cursor = 'pointer';
+        controlUI.style.marginBottom = '22px';
+        controlUI.style.textAlign = 'Center';
+        controlUI.title = 'Reset to original mode';
+        controlDiv.appendChild(controlUI);
+
+        // Set CSS for the control interior.
+        var controlText = document.createElement('div');
+        controlText.style.color = 'rgb(25,25,25)';
+        controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+        controlText.style.fontSize = '14px';
+        controlText.style.lineHeight = '38px';
+        controlText.style.paddingLeft = '5px';
+        controlText.style.paddingRight = '5px';
+        controlText.innerHTML = 'Reset';
+        controlUI.appendChild(controlText);
+
+        // Setup the click event listeners: simply set the map to original mode
+        controlUI.addEventListener('click', function() {
+         google.maps.event.trigger(map, 'resize');
+          map.setCenter(clocater);
+          map.setZoom(3);
+        });
+
+      }
+
+      map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: new google.maps.LatLng(0,20),
+          mapTypeID: google.maps.MapTypeId.ROADMAP
+        });
+
+        // Create the DIV to hold the control and call the CenterControl()
+        // constructor passing in this DIV.
+        var centerControlDiv = document.createElement('div');
+        var centerControl = new CenterControl(centerControlDiv, map);
+
+        centerControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
+
+//////////////////////////////////////////////////////////
+
+// Draw the Google Map
+//var map = new google.maps.Map(document.getElementById('map'), {
+//  zoom: 3,
+//  center: new google.maps.LatLng(0, 20),
+//  mapTypeId: google.maps.MapTypeId.ROADMAP
+//});
+
+var infowindow = new google.maps.InfoWindow();
+var marker, i, text,text1, color_id;
+
+
+d3.text("https://deloitteteams.deloittenet.com/sites/AppDash/Documents/rdlabcities.csv", function(data){
+citydata = d3.csv.parseRows(data);
+
+
+for (i = 1; i < citydata.length; i++) {
+
+  marker = new google.maps.Marker({
+	position: new google.maps.LatLng(citydata[i][3],citydata[i][4]),
+	map: map,
+  icon: "https://deloitteteams.deloittenet.com/sites/AppDash/Documents/"+citydata[i][5]+"-dot.png"
+	});
+
+  if (citydata[i][5] == "green")
+  {color_id = "green-dot.png"}
+  else if (citydata[i][5] == "yellow")
+    {color_id = "yellow-dot.png"}
+  else { color_id = "red-dot.png"};
+
+/////////////////// InfoWindow Multiple Tabs - with some formatting
+text = [
+
+'<ul class="tabs">',
+        '<li>',
+          '<input type="radio" checked name="tabs" id="tab1">',
+          '<label for="tab1">Details</label>',
+          '<div id="tab-content1" class="tab-content animated fadeIn">',
+          '<ul>',
+            'Location: ', citydata[i][1], ', ', citydata[i][2], '<br>',
+            'Service Level is: ', citydata[i][6], '<br>',
+            'Contact: ', citydata[i][7], '<br>',
+            'Phone: ', citydata[i][8], '<br>',
+            '<p style="color: red"><u><small>', '<a href=',citydata[i][9],' target=_blank</small></u>','<u>Site URL:</u></a></p>',
+          '</ul>',
+          '</div>',
+        '</li>',
+        '<li>',
+          '<input type="radio" name="tabs" id="tab2">',
+          '<label for="tab2">Details-1</label>',
+          '<div id="tab-content2" class="tab-content animated fadeIn">',
+          '<ul>',
+            '<br>More Data here </br>',
+          '</ul>',
+          '</div>',
+        '</li>',
+        '<li>',
+          '<input type="radio" name="tabs" id="tab3">',
+          '<label for="tab3">Picture</label>',
+          '<div id="tab-content3" class="tab-content animated fadeIn">',
+          '<ul>',
+          '<p><center><a class="thickbox" <a href=', citydata[i][9], ' target=_blank>',
+          '<img src="https://deloitteteams.deloittenet.com/sites/AppDash/Documents/haarlem_netherlands.png" width="50%" height="50%"></a></center></p>',
+          '</ul>',
+          '</div>',
+        '</li>',
+'</ul>'
+].join('');
+
+
+////////////////// End tab window text
+
+
+
+
+  if(citydata[i][3] == lat_center && citydata[i][4] == long_center) {
+
+    marker.setAnimation(google.maps.Animation.DROP);
+    marker.setIcon('https://maps.gstatic.com/intl/en_ALL/mapfiles/markers2/boost-marker-mapview.png');
+
+    map.Overlay= new google.maps.OverlayView();
+    map.Overlay.center_ = new google.maps.LatLng(lat_center, long_center);
+
+
+    map.Overlay.reddot_ =  '<div id="reddot" class="reddot" style="position:relative;"><svg class="marker" height="33" width="33"><circle cy="33" cx="33" class="mark" r="25"><set id="show" attributeName="visibility" attributeType="CSS" to="visible" begin="0s; hide.end" dur="1s" fill="freeze"/><set id="hide" attributeName="visibility" attributeType="CSS" to="hidden" begin="show.end" dur="1s" fill="freeze"/></circle><img src="http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png" class="locater"></svg></div>';
+
+    map.Overlay.draw = function () {var pixelposition = this.getProjection().fromLatLngToDivPixel(this.center_);
+            jQuery('#reddot').css({top:(pixelposition.y-50), left:(pixelposition.x-33)});};
+
+            map.Overlay.onAdd=function() {
+              var self=this;
+              jQuery(self.getPanes().markerLayer).append(self.reddot_);
+              };
+    map.Overlay.setMap(map);
+  }
+
+
+  google.maps.event.addListener(marker, 'click', (function(marker, text) {
+        return function() {
+          infowindow.setContent(text);
+          infowindow.open(map, marker);
+
+         }
+      })(marker, text));
+
+};
+
+});
+
+
+</script>
+</body>
+</html>

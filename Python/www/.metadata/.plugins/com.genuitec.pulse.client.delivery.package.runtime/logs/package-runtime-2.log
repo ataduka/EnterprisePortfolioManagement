@@ -1,0 +1,8 @@
+Jun 06, 2017 1:54:06 PM com.genuitec.pulse.client.deliverypackage.runtime.internal.Activator initializeLoggers
+INFO: Package starting up at Tue Jun 06 13:54:06 EDT 2017
+Jun 06, 2017 1:54:08 PM com.genuitec.pulse.client.deliverypackage.runtime.UpdatesService checkForWorkspaceUpdates
+INFO: Latest version of package has already been enabled in the workspace; check finished in 20ms
+Jun 06, 2017 2:11:19 PM org.apache.http.client.protocol.ResponseProcessCookies processCookies
+WARNING: Cookie rejected: "[version: 0][name: JSESSIONID][value: 7101CB69F5A67AC78855B34C975B0C2D][domain: subclipse.tigris.org][path: /servlets][expiry: null]". Illegal path attribute "/servlets". Path of origin: "/update_1.10.x/p2.index"
+Jun 06, 2017 2:11:46 PM org.apache.http.client.protocol.ResponseProcessCookies processCookies
+WARNING: Cookie rejected: "[version: 0][name: JSESSIONID][value: 65B61BE5A812B0D9130E60AD06B92399][domain: subclipse.tigris.org][path: /servlets][expiry: null]". Illegal path attribute "/servlets". Path of origin: "/update_1.10.x/p2.index"

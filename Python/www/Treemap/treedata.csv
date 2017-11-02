@@ -1,0 +1,110 @@
+name,parent
+Merchandise Distribution,Root Level
+Root Level,null
+Outbound Transportation,Merchandise Distribution
+Store Merchandise Billing,Merchandise Distribution
+Store Merchandise Delivery,Merchandise Distribution
+Interfacility Transfer Management,Merchandise Distribution
+Finance,Root Level
+Financial Accounting,Finance
+Financial Planning,Finance
+Financial Reporting,Finance
+Global Business Services,Finance
+Payment Processing,Finance
+Payroll Services,Finance
+TJX Internal Audit,Finance
+TJX Tax Management,Finance
+Human Resources,Root Level
+Associate Benefits Management,Human Resources
+Associate Compensation Management,Human Resources
+HR Shared Service Management,Human Resources
+Organization Development,Human Resources
+Talent Development,Human Resources
+TJX Staffing,Human Resources
+Inbound Transportation,Root Level
+Domestic Logistics Management,Inbound Transportation
+Inbound Logistics Planning,Inbound Transportation
+Logistics Vendor Management,Inbound Transportation
+Merchandise Import Management,Inbound Transportation
+Trade Compliance,Inbound Transportation
+Information Management,Root Level
+Data Marts and Data Warehouses,Information Management
+Master Data Management,Information Management
+Reporting and Analytics,Information Management
+Information Technology,Root Level
+Business Tool Management,Information Technology
+Information Life Cycle,Information Technology
+Solution Delivery,Information Technology
+IT Business Planning,Information Technology
+IT Solution Delivery,Information Technology
+IT Solution Operations,Information Technology
+IT Strategy and Architecture,Information Technology
+IT Business Management,Information Technology
+IT Solution Management,Information Technology
+IT Solution Development,Information Technology
+IT Solution Planning,Information Technology
+Marketing,Root Level
+Customer Data Management,Marketing
+Consumer Insights,Marketing
+Marketing Content Management,Marketing
+Customer Engagement,Marketing
+Digital Marketing,Marketing
+Marketing Strategy Development,Marketing
+Store Allocation,Root Level
+Merchandise Availability Management,Store Allocation
+Store Allocation Design,Store Allocation
+Store Allocation Planning,Store Allocation
+Store Shipping Strategy Planning,Store Allocation
+Merchandise Buying,Root Level
+Buying Strategy Development,Merchandise Buying
+Liquidity Management,Merchandise Buying
+Merchandise Markdown Management,Merchandise Buying
+Merchandise Sourcing,Merchandise Buying
+Merchandise Vendor Management,Merchandise Buying
+Purchase Order Management,Merchandise Buying
+Merchandise Planning,Root Level
+Average Retail Planning,Merchandise Planning
+Clearance Variance Management,Merchandise Planning
+Merchandise Financial Planning,Merchandise Planning
+Merchandise Full Price Unit Planning,Merchandise Planning
+Merchandise Hierarchy Management,Merchandise Planning
+Open to Buy Management,Merchandise Planning
+Store Merchandise Planning,Merchandise Planning
+Real Estate and Property Development,Root Level
+Real Estate Construction Management,Real Estate and Property Development
+Real Estate Construction Planning,Real Estate and Property Development
+Real Estate Strategy,Real Estate and Property Development
+Real Estate Vendor Management,Real Estate and Property Development
+Real Estate Property Development Admin,Real Estate and Property Development
+Real Estate Lease Management,Real Estate and Property Development
+Real Estate Fixture Management,Real Estate and Property Development
+Real Estate Facility Management,Real Estate and Property Development
+Selling and Store Operations,Root Level
+Store Customer Service,Selling and Store Operations
+Store Loss Prevention,Selling and Store Operations
+Store Management,Selling and Store Operations
+Store Merchandise Management,Selling and Store Operations
+Store Workforce Management,Selling and Store Operations
+Warehouse Management,Root Level
+DC/PC Operations,Warehouse Management
+Merchandise Holding Management,Warehouse Management
+Merchandise Layup,Warehouse Management
+Merchandise Processing,Warehouse Management
+Merchandise Production Planning,Warehouse Management
+Merchandise Receiving,Warehouse Management
+Legal Services,Root Level
+Business Development Counsel,Legal Services
+Contract Management,Legal Services
+Labor Law,Legal Services
+Risk Management,Legal Services
+eCommerce,Root Level
+eComm Customer Engagement,eCommerce
+eComm Digital Marketing,eCommerce
+eComm Merchandise Distribution,eCommerce
+eComm Merchandise Planning,eCommerce
+eComm Merchandise Processing,eCommerce
+eComm Order Management,eCommerce
+eComm Payment Processing,eCommerce
+eComm Reporting & Analytics,eCommerce
+eComm Site Operations,eCommerce
+eComm Tax Management,eCommerce
